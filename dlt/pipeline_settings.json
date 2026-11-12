@@ -1,0 +1,19 @@
+{
+  "name": "fin-lakehouse-dlt",
+  "catalog": "workspace",
+  "schema": "fin_dlt",
+  "serverless": true,
+  "continuous": false,
+  "development": true,
+  "channel": "CURRENT",
+  "configuration": {
+    "lakehouse.landing": "/Volumes/workspace/fin_raw/files/landing"
+  },
+  "libraries": [
+    {
+      "notebook": {
+        "path": "/Workspace/Users/YOUR_EMAIL/databricks-lakehouse/dlt/transaction_pipeline"
+      }
+    }
+  ]
+}
