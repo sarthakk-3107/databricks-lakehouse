@@ -162,3 +162,32 @@ is ground truth for analysis only and is never used as a feature.
 
 To check that the features work on data this repo did not generate, run the same pipeline on the
 public Kaggle **Sparkov** dataset. See [docs/using_public_data.md](docs/using_public_data.md).
+
+
+
+## Results (synthetic data, out-of-time test window: 63,551 transactions, 262 fraud)
+
+| Metric | Logistic regression | XGBoost |
+|---|---|---|
+| PR-AUC | 0.686 | **0.757** |
+| ROC-AUC | 0.924 | **0.929** |
+| Recall @ 1% FPR | 0.840 | 0.840 |
+| Recall @ 0.1% FPR | 0.611 | **0.832** |
+| Precision in top 0.5% | 0.607 | **0.689** |
+
+| Operating point (XGBoost, FP cost = $10, threshold chosen on validation) | Value |
+|---|---|
+| Alert rate | 0.33% (208 alerts) |
+| Precision / recall | 0.90 / 0.71 |
+| Dollar recall | 95.3% |
+| Cost vs. no model | $3.6K vs. $73.0K (simulated) |
+| Score PSI (val → test) | 0.0004 |
+
+| Fraud scenario | Flag rate |
+|---|---|
+| account_takeover | 100% |
+| cloned_card | 89% |
+| card_testing | 67% |
+| mimic (designed to look normal) | 0% |
+
+Customer segmentation: K-Means, k = 3 (silhouette 0.26), ARI 0.43 vs. hidden segments.
